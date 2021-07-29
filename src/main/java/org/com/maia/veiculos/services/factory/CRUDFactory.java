@@ -3,8 +3,7 @@ package org.com.maia.veiculos.services.factory;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
 public interface CRUDFactory<T, PK extends Serializable> {
 
@@ -18,10 +17,10 @@ public interface CRUDFactory<T, PK extends Serializable> {
     void delete(PK id) throws Exception;
 
     @Transactional(readOnly = true)
-    Optional<T> findById(PK id);
+    T findById(PK id);
 
     @Transactional(readOnly = true)
-    Set<T> findAll();
+    List<T> findAll();
 
 
 }
