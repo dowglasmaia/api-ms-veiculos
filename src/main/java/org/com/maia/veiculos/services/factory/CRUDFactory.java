@@ -8,13 +8,13 @@ import java.util.List;
 public interface CRUDFactory<T, PK extends Serializable> {
 
     @Transactional
-    T save(T entity) throws Exception;
+    T save(T entity) ;
 
     @Transactional
-    T update(T entity) throws Exception;
+    T update(T entity);
 
     @Transactional
-    void delete(PK id) throws Exception;
+    void delete(PK id);
 
     @Transactional(readOnly = true)
     T findById(PK id);

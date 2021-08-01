@@ -1,1 +1,18 @@
+#MYSQL
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/veiculodb?createDatabaseIfNotExist=true&serverTimezone=America/Sao_Paulo
+    username: root
+    password:
+    platform: all
 
+  #JPA / HIBERNATE
+  jpa:
+    hibernate.ddl-auto: update
+    show-sql: true
+    open-in-view: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5Dialect
