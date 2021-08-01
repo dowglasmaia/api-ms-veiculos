@@ -1,6 +1,7 @@
 package org.com.maia.veiculos.services.factory;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 import springfox.documentation.spring.web.json.Json;
 
@@ -13,6 +14,7 @@ public abstract class CRUDFactoryImpl<T, PK extends Serializable> implements CRU
 
     private final JpaRepository<T, PK> repository;
 
+    @Autowired
     public CRUDFactoryImpl(JpaRepository<T, PK> repository) {
         this.repository = repository;
     }
@@ -22,8 +24,8 @@ public abstract class CRUDFactoryImpl<T, PK extends Serializable> implements CRU
         try {
             return repository.save(entity);
         } catch (Exception ex) {
-            log.error("Ocorreu uma flaha ao tentar o Salvar o Recurso", ex.getCause());
-            throw new RuntimeException("Ocorreu uma flaha ao tentar o Salvar o Recurso, " + new Json(entity.toString()));
+            log.error("Ocorreu uma falha ao tentar o Salvar o Recurso", ex.getCause());
+            throw new RuntimeException("Ocorreu uma falha ao tentar o Salvar o Recurso, " + new Json(entity.toString()));
         }
     }
 
@@ -32,8 +34,8 @@ public abstract class CRUDFactoryImpl<T, PK extends Serializable> implements CRU
         try {
             return repository.save(entity);
         } catch (Exception ex) {
-            log.error("Ocorreu uma flaha ao tentar o Atualizar o Recurso,", ex.getCause());
-            throw new RuntimeException("Ocorreu uma flaha ao tentar o Atualizar o Recurso, " + new Json(entity.toString()));
+            log.error("Ocorreu uma falha ao tentar o Atualizar o Recurso,", ex.getCause());
+            throw new RuntimeException("Ocorreu uma falha ao tentar o Atualizar o Recurso, " + new Json(entity.toString()));
         }
     }
 
@@ -42,8 +44,8 @@ public abstract class CRUDFactoryImpl<T, PK extends Serializable> implements CRU
         try{
         repository.deleteById(id);
     } catch (Exception ex) {
-            log.error("Ocorreu uma flaha ao tentar o Deletar o Recurso de ID " + id, ex.getCause());
-        throw new RuntimeException("Ocorreu uma flaha ao tentar o Deletar o Recurso de ID " + id);
+            log.error("Ocorreu uma falha ao tentar Deletar o Recurso de ID " + id, ex.getCause());
+        throw new RuntimeException("Ocorreu uma falha ao tentar o Deletar o Recurso de ID " + id);
     }
     }
 
@@ -58,8 +60,8 @@ public abstract class CRUDFactoryImpl<T, PK extends Serializable> implements CRU
         try{
         return repository.findAll();
     } catch (Exception ex) {
-            log.error("Ocorreu uma flaha ao tentar o Obter os Recursos Solicitados", ex.getCause());
-        throw new RuntimeException("Ocorreu uma flaha ao tentar o Obter os Recursos Solicitados ");
+            log.error("Ocorreu uma falha ao tentar o Obter os Recursos Solicitados", ex.getCause());
+        throw new RuntimeException("Ocorreu uma falha ao tentar o Obter os Recursos Solicitados ");
     }
     }
 

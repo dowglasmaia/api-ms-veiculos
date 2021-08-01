@@ -9,8 +9,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class VeiculoServiceImpl extends CRUDFactoryImpl<Veiculo, String> implements  VeiculoService {
 
+    private final VeiculoRepository veiculoRepository;
+
     @Autowired
     public VeiculoServiceImpl(VeiculoRepository veiculoRepository) {
         super(veiculoRepository);
+
+        this.veiculoRepository = veiculoRepository;
     }
 }
